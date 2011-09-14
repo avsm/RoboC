@@ -46,10 +46,10 @@
 
 \centerline{\textbf{\LARGE ROBOC Summer School User Manual}}
 \vspace{0.5cm}
-\centerline{August 2010}
+\centerline{August 2011}
 \centerline{Author: David Ingram}
-\centerline{Revised: David Eyers (\texttt{David.Eyers@cl.cam.ac.uk})}
-
+\centerline{2010 Revision: David Eyers (\texttt{David.Eyers@cl.cam.ac.uk})}
+\centerline{2011 Revision: Ian Davies (\texttt{Ian.Davies@cl.cam.ac.uk})}
 { \parskip 1mm plus 1pt \tableofcontents }
 
 \newpage
@@ -463,159 +463,6 @@ More operators: \verb^& | ++ -- += *= -= /=^\\
 \end{tabular}
 
 \newpage
-\section{3D Mode} \label{sec:3d-mode}
-
-In 3D mode the display shows a large arena, with some raised platforms
-for constructing objects.
-%\subsection*{Co-ordinates and axes}
-The origin (of the coordinate space) is in the centre, 5 metres above the middle platform.
-The x axis points `east', the y axis points `north', and the z axis
-points directly upwards.
-
-%\section*{Functions}
-%
-%\verb^scale(x, y, z)^ is an example of a \textit{function}.
-%
-%\begin{bulletlist}
-%\item Functions in programming are different from functions in Maths
-%\item Functions perform useful tasks, like drawing to the screen
-%\item Many functions may have parameters (like x, y and colour),
-%	which control exactly what they do
-%\item Some functions calculate a result. These \textbf{are} like
-%	Maths functions
-%\end{bulletlist}
-
-\subsection{Shapes}
-
-The following functions draw shapes at the current position.
-Unless transformed they generally have unit size.
-
-\begin{verbatim}
-cube()
-sphere()
-cylinder()
-cone()
-pyramid()
-prism()
-torus(thickness)
-\end{verbatim}
-
-The \verb^pyramid()^ is square-based. The \verb^prism()^ is right-angled
-triangle-based.
-
-The torus \verb^thickness^ parameter
-must be greater than 0 and less than 1. A torus of thickness 1 would
-have no hole in the middle, and one of thickness 0 would be thin enough to be
-invisible.
-
-\subsection{Transformations}
-
-\begin{verbatim}
-translate(x, y, z)
-scale(x, y, z)
-rotatex(angle)
-rotatey(angle)
-rotatez(angle)
-colour(n)
-mark()
-recall()
-\end{verbatim}
-
-The three rotation functions rotate about the x, y or z axis respectively.\\
-Positive rotations are clockwise about an axis, looking towards the origin.\\
-Scale factors of more than 1 are enlargements; factors less than 1 make
-objects smaller.
-
-%\verb^mark()^ and \verb^recall()^ save position, orientation,
-%scaling factors and drawing colour. They may be nested as long as
-%every \verb^mark()^ has one matching \verb^recall()^.
-
-3D mode uses the same colour names and numbers as Art mode (see page \pageref{roboc:colours}).
-%\subsection*{Colour}
-%
-%\begin{verbatim}
-%colour(name)
-%\end{verbatim}
-%
-%The following colour names can be used:
-%
-%\begin{verbatim}
-%White   Red      Yellow   Sky    Grey    Purple
-%Black   Orange   Green    Blue   Brown   Pink
-%\end{verbatim}
-%
-
-\subsubsection*{Order of transformations}
-
-Transformations move around the world from the origin in order.\\
-The effect they have on a particular object is in \textbf{reverse} order.\\
-
-\subsubsection*{Scope of transformations}
-
-Each transformation effects \textbf{every} object that is drawn after
-that point, not just the next one!\\
-This is useful to scale or rotate a complete model.\\
-The disadvantage is you must undo transformations to get back to where
-you started.\\
-
-\subsection{Remembering positions}
-
-\begin{verbatim}
-mark()
-recall()
-\end{verbatim}
-
-\verb^mark()^ and \verb^recall()^ save position, orientation,
-scaling factors and drawing colour. They may be nested as long as
-every \verb^mark()^ has one matching \verb^recall()^.\\
-
-%E.g. house and windows.
-
-\subsection{Global status variables}
-
-The following three variables always contain the position of the camera:
-
-\begin{verbatim}
-playerx
-playery
-playerz
-\end{verbatim}
-
-\subsection{Viewer controls (centred mode)}
-
-The camera always faces towards the origin in centred mode,
-but you can change its position in the room using the following keys:
-
-\begin{tabular}{ll}
-Cursor left  & Rotate camera left\\
-Cursor right & Rotate camera right\\
-Cursor up    & Zoom in towards the centre of the room\\
-Cursor down  & Zoom out away from the centre of the room\\
-J            & Jet-pack (release for normal gravity)\\
-W            & Switch to walk mode\\
-Escape       & Back to the editor screen\\
-\end{tabular}
-
-\subsection{Viewer controls (walk mode)}
-
-In this mode you can move around the arena freely.
-
-\begin{tabular}{ll}
-Cursor left  & Turn left\\
-Cursor right & Turn right\\
-Shift-Cursor left  & Side step left\\
-Shift-Cursor right & Side step right\\
-Cursor up    & Walk forward\\
-Cursor down  & Walk backward\\
-Shift-Cursor up & Look upwards\\
-Shift-Cursor down & Look downwards\\
-Enter        & Look horizontally\\
-J            & Jet-pack (release for normal gravity)\\
-C            & Switch to centred mode\\
-Escape       & Back to the editor screen\\
-\end{tabular}
-
-\newpage
 \section{Logo Mode} \label{sec:logo-mode}
 
 In logo mode the roboc program controls a turtle that paints
@@ -762,66 +609,6 @@ Every mission has a target score. You should try to reach this.
 The target score isn't the highest possible on most missions, but
 if you get it you know you have reached a good standard. When you have
 achieved the target your score for that mission will turn from red to green.
-
-\newpage
-\section{Text Mode} \label{sec:text-mode}
-
-In text mode, the output screen displays the messages from \verb^print^
-statements. It will scroll if the output reaches the bottom of the screen.
-Note that currently there is no way to scroll back up to see previous output.
-
-\subsection{Standard math library} \label{sec:stand-math-libr}
-
-These functions are all available in all modes (not just text mode),
-with the exception of \verb^random()^, which is not available in
-robot mode.
-
-\begin{verbatim}
-y = sin(x)
-y = cos(x)
-y = tan(x)
-y = sqrt(x)
-y = pow(x, exponent)
-y = ln(x)
-n = round(x)
-n = random(from, to)
-\end{verbatim}
-
-The \verb^sin^, \verb^cos^ and \verb^tan^ functions all accept
-arguments in degrees.
-
-One variable is predefined:
-
-\begin{verbatim}
-Pi
-\end{verbatim}
-
-\subsection{String library functions} \label{sec:string-libr-funct} 
-
-These functions are also available in all modes:
-
-\begin{verbatim}
-letters(string)
-words(string)
-substring(first, last, string)
-word(n, string)
-\end{verbatim}
-
-\verb^letters()^ and \verb^words()^ count the number of characters
-and words in a string. Words are anything separated by spaces.
-\verb^word()^ returns the \verb^n^th word in a string. Words and
-characters are labelled starting from zero.
-
-The following function is available in all modes except for robot
-mode or 3D mode:
-
-\begin{verbatim}
-s = read()
-\end{verbatim}
-
-This inputs a line of text from the keyboard. In graphical modes or if
-the IDE is running, the status line at the bottom of the screen is used
-to accept input. In text mode without the IDE, the console is used instead.
 
 \newpage
 \section{Art Mode} \label{sec:art-mode}
@@ -1088,69 +875,218 @@ This is to prevent them clashing with your own variable names.
 If case sensitivity is on (\verb^Case: SPEC^ appears in the IDE), the names
 should be used without underscores, e.g. \verb^Ant^.
 
-\appendix
+
 \newpage
-\section{The \textbf{\texttt{roboc}} Grammar}
+\section{3D Mode} \label{sec:3d-mode}
+
+In 3D mode the display shows a large arena, with some raised platforms
+for constructing objects.
+%\subsection*{Co-ordinates and axes}
+The origin (of the coordinate space) is in the centre, 5 metres above the middle platform.
+The x axis points `east', the y axis points `north', and the z axis
+points directly upwards.
+
+%\section*{Functions}
+%
+%\verb^scale(x, y, z)^ is an example of a \textit{function}.
+%
+%\begin{bulletlist}
+%\item Functions in programming are different from functions in Maths
+%\item Functions perform useful tasks, like drawing to the screen
+%\item Many functions may have parameters (like x, y and colour),
+%	which control exactly what they do
+%\item Some functions calculate a result. These \textbf{are} like
+%	Maths functions
+%\end{bulletlist}
+
+\subsection{Shapes}
+
+The following functions draw shapes at the current position.
+Unless transformed they generally have unit size.
 
 \begin{verbatim}
-<program> ::= <toplevel> <toplevel> ...
-<toplevel> ::= <statement> | <fn-defn>
-<fn-defn> ::= fn <fn-name> <formal-param>, <formal-param>, ... <NL> <block> |
-   fn <fn-name> ( <formal-param>, <formal-param>, ... ) <NL> <block>
-<formal-param> ::= <var> | <array-ref>
-<stmt-list> ::= <statement> <statement> ...
-<block> ::= <stmt-list> <end-stmt>
-<end-stmt> ::= end <NL>
-<statement> ::= <flow-of-ctrl> | <executable> <NL>
-
-<flow-of-ctrl> ::= <return-stmt> <NL> | <if-construct> | <while-construct> |
-   <loop-construct>
-<return-stmt> ::= return | return <expr>
-<if-construct> ::= if <cond> <NL> <stmt-list> <if-tail>
-<if-tail> ::= <end-stmt> | else <NL> <block> |
-   elif <cond> <NL> <stmt-list> <if-tail>
-<while-construct> ::= while <cond> <NL> <block>
-<loop-construct> ::= <loop-stmt> <NL> <block>
-<loop-stmt> ::= loop <var> from <expr> to <expr> | loop
-
-<cond> ::= <test> | <cond> and <test> | <cond> or <test>
-<test> ::= <expr> <comparator> <expr> | true | false
-<comparator> ::= < | > | = | ~
-
-<executable> ::= <declaration> | <assignment> | <fn-call-stmt>
-<declaration> ::= var <initializer>, <initializer>, ...
-<initializer> ::= <var> | <var> = <expr> | <init-array>
-<init-array> ::= <array-size>
-<assignment> ::= <box> = <expr>
-<box> ::= <var> | <array-element>
-<fn-call-stmt> ::= <fn-call> | <fn-name> <actual-param>, <actual-param>, ...
-<fn-call> ::= <fn-name> ( <actual-param>, <actual-param>, ... ) | <fn-name>
-<actual-param> ::= <expr> | <array-ref>
-
-<array-element> ::= <array> [ <expr> ]
-<array-size> ::= <array> [ <expr> ]
-<array-ref> ::= <array> [ ]
-
-<expr> ::= <atomic> | <expr> <op> <atomic> | - <atomic>
-<atomic> ::= <value> | <fn-call> | ( <expr> ) | <array-element> | <array> [ # ]
-<op> ::= + | - | * | / | % | : | ;
-
-<value> ::= <var> | <number> | <string>
-<string> ::= " <char> <char> ... "
-<char> ::= {Anything other than <NL> or "}
-<comment> ::= # {Anything other than <NL>} ... <NL>
-
-<var> ::= <name>
-<array> ::= <name>
-<fn-name> ::= <name>
-<name> ::= <letter> <alphanum> <alphanum> ...
-<alphanum> ::= <digit> | <letter>
-<letter> ::= a | b | c | ... | y | z | A | B | C | ... | Y | Z | _
-
-<number> ::= <integer> | <integer> <decimal>
-<decimal> ::= . <integer>
-<integer> ::= digit digit ...
-<digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+cube()
+sphere()
+cylinder()
+cone()
+pyramid()
+prism()
+torus(thickness)
 \end{verbatim}
+
+The \verb^pyramid()^ is square-based. The \verb^prism()^ is right-angled
+triangle-based.
+
+The torus \verb^thickness^ parameter
+must be greater than 0 and less than 1. A torus of thickness 1 would
+have no hole in the middle, and one of thickness 0 would be thin enough to be
+invisible.
+
+\subsection{Transformations}
+
+\begin{verbatim}
+translate(x, y, z)
+scale(x, y, z)
+rotatex(angle)
+rotatey(angle)
+rotatez(angle)
+colour(n)
+mark()
+recall()
+\end{verbatim}
+
+The three rotation functions rotate about the x, y or z axis respectively.\\
+Positive rotations are clockwise about an axis, looking towards the origin.\\
+Scale factors of more than 1 are enlargements; factors less than 1 make
+objects smaller.
+
+%\verb^mark()^ and \verb^recall()^ save position, orientation,
+%scaling factors and drawing colour. They may be nested as long as
+%every \verb^mark()^ has one matching \verb^recall()^.
+
+3D mode uses the same colour names and numbers as Art mode (see page \pageref{roboc:colours}).
+%\subsection*{Colour}
+%
+%\begin{verbatim}
+%colour(name)
+%\end{verbatim}
+%
+%The following colour names can be used:
+%
+%\begin{verbatim}
+%White   Red      Yellow   Sky    Grey    Purple
+%Black   Orange   Green    Blue   Brown   Pink
+%\end{verbatim}
+%
+
+\subsubsection*{Order of transformations}
+
+Transformations move around the world from the origin in order.\\
+The effect they have on a particular object is in \textbf{reverse} order.\\
+
+\subsubsection*{Scope of transformations}
+
+Each transformation effects \textbf{every} object that is drawn after
+that point, not just the next one!\\
+This is useful to scale or rotate a complete model.\\
+The disadvantage is you must undo transformations to get back to where
+you started.\\
+
+\subsection{Remembering positions}
+
+\begin{verbatim}
+mark()
+recall()
+\end{verbatim}
+
+\verb^mark()^ and \verb^recall()^ save position, orientation,
+scaling factors and drawing colour. They may be nested as long as
+every \verb^mark()^ has one matching \verb^recall()^.\\
+
+%E.g. house and windows.
+
+\subsection{Global status variables}
+
+The following three variables always contain the position of the camera:
+
+\begin{verbatim}
+playerx
+playery
+playerz
+\end{verbatim}
+
+\subsection{Viewer controls (centred mode)}
+
+The camera always faces towards the origin in centred mode,
+but you can change its position in the room using the following keys:
+
+\begin{tabular}{ll}
+Cursor left  & Rotate camera left\\
+Cursor right & Rotate camera right\\
+Cursor up    & Zoom in towards the centre of the room\\
+Cursor down  & Zoom out away from the centre of the room\\
+J            & Jet-pack (release for normal gravity)\\
+W            & Switch to walk mode\\
+Escape       & Back to the editor screen\\
+\end{tabular}
+
+\subsection{Viewer controls (walk mode)}
+
+In this mode you can move around the arena freely.
+
+\begin{tabular}{ll}
+Cursor left  & Turn left\\
+Cursor right & Turn right\\
+Shift-Cursor left  & Side step left\\
+Shift-Cursor right & Side step right\\
+Cursor up    & Walk forward\\
+Cursor down  & Walk backward\\
+Shift-Cursor up & Look upwards\\
+Shift-Cursor down & Look downwards\\
+Enter        & Look horizontally\\
+J            & Jet-pack (release for normal gravity)\\
+C            & Switch to centred mode\\
+Escape       & Back to the editor screen\\
+\end{tabular}
+
+
+\section{Text Mode} \label{sec:text-mode}
+
+In text mode, the output screen displays the messages from \verb^print^
+statements. It will scroll if the output reaches the bottom of the screen.
+Note that currently there is no way to scroll back up to see previous output.
+
+\subsection{Standard math library} \label{sec:stand-math-libr}
+
+These functions are all available in all modes (not just text mode),
+with the exception of \verb^random()^, which is not available in
+robot mode.
+
+\begin{verbatim}
+y = sin(x)
+y = cos(x)
+y = tan(x)
+y = sqrt(x)
+y = pow(x, exponent)
+y = ln(x)
+n = round(x)
+n = random(from, to)
+\end{verbatim}
+
+The \verb^sin^, \verb^cos^ and \verb^tan^ functions all accept
+arguments in degrees.
+
+One variable is predefined:
+
+\begin{verbatim}
+Pi
+\end{verbatim}
+
+\subsection{String library functions} \label{sec:string-libr-funct} 
+
+These functions are also available in all modes:
+
+\begin{verbatim}
+letters(string)
+words(string)
+substring(first, last, string)
+word(n, string)
+\end{verbatim}
+
+\verb^letters()^ and \verb^words()^ count the number of characters
+and words in a string. Words are anything separated by spaces.
+\verb^word()^ returns the \verb^n^th word in a string. Words and
+characters are labelled starting from zero.
+
+The following function is available in all modes except for robot
+mode or 3D mode:
+
+\begin{verbatim}
+s = read()
+\end{verbatim}
+
+This inputs a line of text from the keyboard. In graphical modes or if
+the IDE is running, the status line at the bottom of the screen is used
+to accept input. In text mode without the IDE, the console is used instead.
 
 \end{document}
